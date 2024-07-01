@@ -80,6 +80,14 @@ const targets: {
     }),
     useCase: authUseCase.listUserPools,
   },
+  'AWSCognitoIdentityProviderService.ChangePassword': {
+    validator: z.object({
+      AccessToken: z.string(),
+      PreviousPassword: z.string(),
+      ProposedPassword: z.string(),
+    }),
+    useCase: authUseCase.changePassword,
+  },
 };
 
 const main = <T extends keyof AmzTargets>(target: T, body: AmzTargets[T]['reqBody']) => {
