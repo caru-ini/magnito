@@ -138,4 +138,11 @@ export const userMethod = {
       user: params.user,
     });
   },
+  changePassword: (params: { user: UserEntity; salt: string; verifier: string }): UserEntity => ({
+    ...params.user,
+    verifier: params.verifier,
+    salt: params.salt,
+    refreshToken: ulid(),
+    challenge: undefined,
+  }),
 };
